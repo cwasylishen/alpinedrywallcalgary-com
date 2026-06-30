@@ -1,0 +1,50 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+const {
+  title,
+  description = "Calgary's commercial and institutional drywall contractor since 1986. COR certified. Gold Seal management. Steel stud framing, drywall, acoustical ceilings.",
+  active = "",
+  ogTitle,
+  ogImage = "https://alpinedrywallcalgary.com/assets/images/hero-background.jpg",
+  canonical,
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="author" content="Alpine Drywall (Calgary) Ltd." />
+  <meta name="theme-color" content="#0f172a" />
+  {canonical && <link rel="canonical" href={canonical} />}
+  <meta property="og:type" content="website" />
+  {canonical && <meta property="og:url" content={canonical} />}
+  <meta property="og:title" content={ogTitle || title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="icon" type="image/png" href="/assets/images/logo.png" />
+  <slot name="head" />
+</head>
+<body>
+  <Header active={active} />
+  <slot />
+  <Footer />
+  <script is:inline>
+    document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
+    const toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks');
+    toggle&&toggle.addEventListener('click',()=>{const o=links.classList.toggle('open');toggle.classList.toggle('open',o);toggle.setAttribute('aria-expanded',String(o));});
+    if('IntersectionObserver' in window){const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));}
+  </script>
+  <script is:inline>(function(){var S="alpinedrywall";function vid(){try{var k="wzv",x=localStorage.getItem(k);if(!x){x=Date.now().toString(36)+Math.random().toString(36).slice(2,8);localStorage.setItem(k,x)}return x}catch(e){return""}}
+  function send(t){try{var r=document.referrer;try{if(r&&new URL(r).hostname===location.hostname)r=""}catch(e){}navigator.sendBeacon("https://app.wizardweb.ca/api/ingest",JSON.stringify({site_id:S,type:t,path:location.pathname,referrer:r,visitor:vid()}))}catch(e){}}
+  send("pageview");document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest('a[href*="wa.me"],a[href*="api.whatsapp.com"],a[href*="whatsapp.com/send"]');if(a)send("whatsapp");},true);})();</script>
+</body>
+</html>

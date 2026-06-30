@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+const team = [
+  { name: "Henry Reichert", role: "Operations Manager", img: "henry-reichert-operations-manager-alpine.jpg", alt: "Henry Reichert, Operations Manager at Alpine Drywall Calgary", facts: ["Started in construction, 1976","With Alpine since 1982","Gold Seal Certified","Provincial Apprenticeship Committee board member"] },
+  { name: "Joseph Short", role: "Senior Estimator", img: "joe-short-senior-estimator-alpine.jpg", alt: "Joseph Short, Senior Estimator at Alpine Drywall Calgary", facts: ["Started in construction, 1980","With Alpine since 1990","NAIT Construction Engineering Technology","Gold Seal Certified"] },
+  { name: "Kurt Wunderlich", role: "Director & Superintendent", img: "kurt-project-manager-alpine-drywall.jpg", alt: "Kurt Wunderlich, Director and Superintendent at Alpine Drywall Calgary", facts: ["With Alpine since 2002","One of Alpine's original apprentices","ISM Journeyman Certificate"] },
+  { name: "Karl Wunderlich", role: "Director & Estimator", img: "karl-site-supervisor-alpine-drywall.jpg", alt: "Karl Wunderlich, Director and Estimator at Alpine Drywall Calgary", facts: ["Started in construction, 1999","With Alpine since 2005","ISM Journeyman Certificate","LEED project specialist"] },
+  { name: "Seth McVey", role: "Safety Officer", img: "seth-estimator-alpine-drywall.jpg", alt: "Seth McVey, Safety Officer at Alpine Drywall Calgary", facts: ["18 years at Alpine Drywall","NCSO Certified","Leadership for Safety Excellence","Multiple field safety designations"] },
+  { name: "Jennifer Darrow", role: "Director & Office Manager", img: "jen-office-manager-alpine-drywall.jpg", alt: "Jennifer Darrow, Director and Office Manager at Alpine Drywall Calgary", facts: ["With Alpine since 2009","General management and financial oversight","Project cost control systems"] },
+  { name: "Jackie Smith", role: "Administration", img: "jackie-administration-alpine-drywall.jpg", alt: "Jackie Smith, Administration at Alpine Drywall Calgary", facts: ["With Alpine since 1989","Accounts payable and receivable","Payroll and invoicing"] },
+];
+---
+<Base title="Leadership Team | Alpine Drywall (Calgary) Ltd." description="Directors, estimators, and superintendents who learned the trade in the field. Gold Seal Certified, NCSO safety, decades of tenure." active="team" canonical="https://alpinedrywallcalgary.com/team.html">
+  <main>
+    <section class="page-hero">
+      <div class="wrap">
+        <span class="eyebrow">Leadership</span>
+        <h1>Trades people. Running a trades company.</h1>
+        <p class="lead">Directors, estimators, and superintendents who learned the work on the floor, then took on the responsibility of running it.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="team">
+          {team.map((m) => (
+            <article class="team-card">
+              <div class="photo"><img src={`/assets/images/${m.img}`} alt={m.alt} loading="lazy" /></div>
+              <div class="body">
+                <h3>{m.name}</h3>
+                <p class="role">{m.role}</p>
+                <ul>{m.facts.map((f) => (<li>{f}</li>))}</ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</Base>

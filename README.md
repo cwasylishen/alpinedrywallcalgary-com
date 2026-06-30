@@ -1,17 +1,6 @@
-# alpinedrywallcalgary.com
+# Alpine Drywall (Calgary) Ltd.
 
-Showcase site for Alpine Drywall (Calgary) Ltd. Commercial and institutional drywall, framing, and acoustical ceilings since 1986. No contact form or inbound channel by design.
-
-## Stack
-
-Static HTML, no build step. Hosted on Cloudflare Pages.
-
-- `index.html`, `expertise.html`, `safety.html`, `team.html`, `404.html`
-- `assets/styles.css` — design system
-- `assets/images/` — optimized JPGs and PNGs
-- `_headers` / `_redirects` — Cloudflare Pages config
-- `sitemap.xml`, `robots.txt`
+Astro site. Components in `src/components` (Header, Footer), layout in `src/layouts/Base.astro`, pages in `src/pages`. Static assets in `public/`.
 
 ## Deploy
-
-Connect this repo to Cloudflare Pages. Build command: none. Output directory: `.`.
+`npm run deploy` (runs `astro build` -> `dist`, then `wrangler deploy`). Custom domain `alpinedrywallcalgary.com` is attached to the Worker.

@@ -1,0 +1,21 @@
+---
+const { active } = Astro.props;
+const cls = (k) => (active === k ? "active" : undefined);
+---
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Main navigation">
+    <a href="/" class="brand" aria-label="Alpine Drywall home">
+      <img src="/assets/images/logo.png" alt="" width="44" height="44" />
+      <span class="brand-text">Alpine <span>Drywall</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="/" class={cls("home")}>Home</a>
+      <a href="/expertise.html" class={cls("expertise")}>Expertise</a>
+      <a href="/safety.html" class={cls("safety")}>Safety</a>
+      <a href="/team.html" class={cls("team")}>Team</a>
+    </div>
+  </nav>
+</header>
